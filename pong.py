@@ -45,8 +45,8 @@ ball.goto(0, 0)
 
 
 # Game Ball Physics
-ball.dx = 2
-ball.dy = 0
+ball.dx = 4
+ball.dy = 2
 
 
 # Player Input Functions
@@ -95,7 +95,15 @@ while True:
 
     # Basic Border Checking
     if ball.xcor() > 390:
-        ball.dx = ball.dx * -1
+        ball.dx *= -1
+        ball.goto(0,0)
 
     if ball.xcor() < -390:
-        ball.dx = ball.dx * -1
+        ball.dx *= -1
+        ball.goto(0,0)
+
+    if ball.ycor() > 290:
+        ball.dy *= -1
+
+    if ball.ycor() < -290:
+        ball.dy *= -1
