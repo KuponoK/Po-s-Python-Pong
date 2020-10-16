@@ -5,13 +5,16 @@
 import turtle
 
 # Screen setup
+
 win = turtle.Screen()
 win.title("Po's Python Pong")
 win.bgcolor("black")
 win.setup(width=800, height=600)
 win.tracer(0)
 
+
 # Gameplay objects
+
 
 # Player 1 Paddle
 paddle_a = turtle.Turtle()
@@ -31,14 +34,20 @@ paddle_b.shapesize(stretch_wid=5, stretch_len=1)
 paddle_b.penup()
 paddle_b.goto(350, 0)
 
-# Game ball
+
+# Game Ball
 ball = turtle.Turtle()
 ball.speed(0)
 ball.shape("circle")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.forward(100)
+
+
+# Game Ball Physics
+ball.dx = 2
+ball.dy = 0
+
 
 # Player Input Functions
 
@@ -75,6 +84,18 @@ win.onkeypress(paddle_a_down, "s")
 win.onkeypress(paddle_b_up, "Up")
 win.onkeypress(paddle_b_down, "Down")
 
+
 # Main Game Loop
 while True:
     win.update()
+
+    # Move Ball Code
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    # Basic Border Checking
+    if ball.xcor() > 390:
+        ball.dx = ball.dx * -1
+
+    if ball.xcor() < -390:
+        ball.dx = ball.dx * -1
