@@ -14,22 +14,22 @@ win.tracer(0)
 # Gameplay objects
 
 # Player 1 Paddle
-paddle_1 = turtle.Turtle()
-paddle_1.speed(0)
-paddle_1.shape("square")
-paddle_1.color("white")
-paddle_1.shapesize(stretch_wid=5, stretch_len=1)
-paddle_1.penup()
-paddle_1.goto(-350, 0)
+paddle_a = turtle.Turtle()
+paddle_a.speed(0)
+paddle_a.shape("square")
+paddle_a.color("white")
+paddle_a.shapesize(stretch_wid=5, stretch_len=1)
+paddle_a.penup()
+paddle_a.goto(-350, 0)
 
 # Player 2 Paddle
-paddle_2 = turtle.Turtle()
-paddle_2.speed(0)
-paddle_2.shape("square")
-paddle_2.color("white")
-paddle_2.shapesize(stretch_wid=5, stretch_len=1)
-paddle_2.penup()
-paddle_2.goto(350, 0)
+paddle_b = turtle.Turtle()
+paddle_b.speed(0)
+paddle_b.shape("square")
+paddle_b.color("white")
+paddle_b.shapesize(stretch_wid=5, stretch_len=1)
+paddle_b.penup()
+paddle_b.goto(350, 0)
 
 # Game ball
 ball = turtle.Turtle()
@@ -39,6 +39,41 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0)
 ball.forward(100)
+
+# Player Input Functions
+
+
+# Paddle a
+def paddle_a_up():
+    y = paddle_a.ycor()
+    y += 20
+    paddle_a.sety(y)
+
+
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 20
+    paddle_a.sety(y)
+
+
+# Paddle b
+def paddle_b_up():
+    y = paddle_b.ycor()
+    y += 20
+    paddle_b.sety(y)
+
+
+def paddle_b_down():
+    y = paddle_b.ycor()
+    y -= 20
+    paddle_b.sety(y)
+
+
+win.listen()
+win.onkeypress(paddle_a_up, "w")
+win.onkeypress(paddle_a_down, "s")
+win.onkeypress(paddle_b_up, "Up")
+win.onkeypress(paddle_b_down, "Down")
 
 # Main Game Loop
 while True:
