@@ -56,7 +56,7 @@ title.color("white")
 title.penup()
 title.hideturtle()
 title.goto(0, 260)
-title.write("Player 1 score: 0  |  Player 2 score: 0",
+title.write("P1 score: 0  |  P2 score: 0",
             align="center", font=("Chiller", 22, "normal"))
 
 # Game Ball Physics
@@ -112,10 +112,18 @@ while True:
     if ball.xcor() > 390:
         ball.dx *= -1
         ball.goto(0, 0)
+        title.clear()
+        score_a += 1
+        title.write("P1 score: " + str(score_a) + " |  P2 score: " +
+                    str(score_b), align="center", font=("Courier", 22, "normal"))
 
     if ball.xcor() < -390:
         ball.dx *= -1
         ball.goto(0, 0)
+        title.clear()
+        score_b += 1
+        title.write("P1 score: " + str(score_a) + " |  P2 score: " +
+                    str(score_b), align="center", font=("Courier", 22, "normal"))
 
     if ball.ycor() > 290:
         ball.dy *= -1
