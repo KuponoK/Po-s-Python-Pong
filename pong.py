@@ -16,6 +16,11 @@ win.tracer(0)
 # Gameplay objects
 
 
+# Score Variables
+score_a = 0
+score_b = 0
+
+
 # Player 1 Paddle
 paddle_a = turtle.Turtle()
 paddle_a.speed(0)
@@ -43,6 +48,16 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0)
 
+
+# Scoreboard
+title = turtle.Turtle()
+title.speed(0)
+title.color("white")
+title.penup()
+title.hideturtle()
+title.goto(0, 260)
+title.write("Player 1 score: 0  |  Player 2 score: 0",
+            align="center", font=("Chiller", 22, "normal"))
 
 # Game Ball Physics
 ball.dx = 4
@@ -96,14 +111,22 @@ while True:
     # Basic Border Checking
     if ball.xcor() > 390:
         ball.dx *= -1
-        ball.goto(0,0)
+        ball.goto(0, 0)
 
     if ball.xcor() < -390:
         ball.dx *= -1
-        ball.goto(0,0)
+        ball.goto(0, 0)
 
     if ball.ycor() > 290:
         ball.dy *= -1
 
     if ball.ycor() < -290:
         ball.dy *= -1
+
+    # Collision Dectecting
+
+    if(ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor()+50 and ball.ycor() > paddle_b.ycor()-50):
+        ball.dx = ball.dx * -1
+
+    if(ball.xcor() > -350 and ball.xcor() < -340) and (ball.ycor() < paddle_a.ycor()+50 and ball.ycor() > paddle_a.ycor()-50):
+        ball.dx = ball.dx * -1
