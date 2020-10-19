@@ -1,7 +1,7 @@
 # Pos-Python-Pong:
 
 # What is it?
-A simple game of Pong made in Python. Two players, two paddles, and one ball. The objective of the game is to use your paddle to hit the ball past the other 
+A simple game of Pong made in Python. Two players, two paddles, and one ball. The objective of the game is to use your paddle to hit the ball pass the other 
 users paddle. Basically Ping Pong but 2D.
 
 # Motivation:
